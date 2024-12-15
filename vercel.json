@@ -29,7 +29,7 @@
 
         "DB_CONNECTION": "mysql",
         "DB_HOST": "sql5.freesqldatabase.com",
-        "DB_PORT": 3306,
+        "DB_PORT": "3306",
         "DB_DATABASE": "sql5752144",
         "DB_USERNAME": "sql5752144",
         "DB_PASSWORD": "LSrDruyYuc"
