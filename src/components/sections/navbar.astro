@@ -2,9 +2,9 @@
 export let title = "Navbar";
 const { pathname } = Astro.url;
 export let links = [
-  { name: "Home", path: "/home" },
+  { name: "Home", path: "#home" },
   { name: "About", path: "#about" },
-  { name: "Skills", path: "/skills" },
+  { name: "Skills", path: "#skills" },
   { name: "Project", path: "/project" },
   { name: "Contact", path: "/contact" },
 ];
@@ -18,24 +18,89 @@ export let links = [
         <a aria-current="page" class="flex items-center" href="/">
           <img
             class="h-7 w-auto"
-            src="public/logo_hayproject.jpeg"
-            alt=""
+            src="/logo_hayproject.jpeg"
+            alt="HayProject"
           />
           <p class="sr-only">HayProject</p>
         </a>
       </div>
+
       <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
-        {links.map((link) => (
+        {
+          links.map((link) => (
+            <a
+              class={`text-sm font-semibold transition-all duration-150 ${
+                pathname === link.path
+                  ? "text-blue-600"
+                  : "text-gray-900 hover:text-blue-600"
+              }`}
+              href={link.path}
+              {...(link.path.startsWith("#")
+                ? { "data-scroll": true, "data-target": link.path.slice(1) }
+                : {})}>
+              {link.name}
+            </a>
+          ))
+        }
+      </div>
+
+      <button
+        id="burger"
+        class="md:hidden focus:outline-none"
+        aria-label="Open Menu">
+        <svg
+          class="w-6 h-6 text-gray-900"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-2">
+      {
+        links.map((link) => (
           <a
-            class={`text-sm font-semibold transition-all duration-150 ${
-              pathname === link.path ? "text-blue-600" : "text-gray-900 hover:text-blue-600"
+            class={`block text-sm font-semibold px-4 py-2 rounded transition-all duration-150 ${
+              pathname === link.path
+                ? "text-blue-600"
+                : "text-gray-900 hover:text-blue-600"
             }`}
-            href={link.path}
-          >
+            href={link.path}>
             {link.name}
           </a>
-        ))}
-      </div>
+        ))
+      }
     </div>
   </div>
 </header>
+
+<script is:inline>
+  const burger = document.getElementById("burger");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  burger.addEventListener("click", () => {
+    mobileMenu.classList.toggle("hidden");
+  });
+
+  document.querySelectorAll('a[data-scroll="true"]').forEach((el) => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = el.getAttribute("data-target");
+      const targetEl = document.getElementById(targetId);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth" });
+
+        if (!mobileMenu.classList.contains("hidden")) {
+          mobileMenu.classList.add("hidden");
+        }
+      }
+    });
+  });
+</script>
