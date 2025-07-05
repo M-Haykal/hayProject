@@ -1,7 +1,8 @@
 ---
 import Navbar from "../components/sections/navbar.astro";
 import Footer from "../components/sections/footer.astro";
-import { ViewTransitions } from 'astro:transitions';
+import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <html lang="en">
@@ -11,15 +12,12 @@ import { ViewTransitions } from 'astro:transitions';
     <link rel="stylesheet" href="/styles/global.css" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="stylesheet" href="/styles/global.css" />
     <ViewTransitions />
     <title>HayProject</title>
   </head>
-  <body>
+  <body class="">
     <Navbar />
-    <main class="py-10">
-        <slot />
-    </main>
+    <slot />
     <Footer />
   </body>
 </html>
