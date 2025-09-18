@@ -1,0 +1,44 @@
+{
+    "skill" : [
+        {
+            "name": "HTML",
+            "image": "public/html.png"
+        },
+        {
+            "name": "CSS",
+            "image": "public/css.png"
+        },
+        {
+            "name": "Bootstrap",
+            "image": "public/Bootstrap.png"
+        },
+        {
+            "name": "Javascript",
+            "image": "public/javascript.png"
+        },
+        {
+            "name": "Astro JS",
+            "image": "https://astro.build/favicon.svg"
+        },
+        {
+            "name": "Next JS",
+            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Cib-next-js_%28CoreUI_Icons_v1.0.0%29.svg/256px-Cib-next-js_%28CoreUI_Icons_v1.0.0%29.svg.png"
+        },
+        {
+            "name": "Express js",
+            "image": "public/express-js.png"
+        },
+        {
+            "name": "Laravel",
+            "image": "public/laravel.png"
+        },
+        {
+            "name": "Flutter",
+            "image": "public/flutter.png"
+        },
+        {
+            "name": "Git",
+            "image": "public/git.png"
+        }
+    ]
+}

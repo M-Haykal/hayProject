@@ -1,72 +1,43 @@
 ---
-export let title = "Skills";
+import skillsData from "../data/skill.json";
+
+function getImagePath(image: string) {
+  if (image.startsWith("http")) return image;
+  return image.startsWith("public/") ? image.replace("public/", "/") : image;
+}
 ---
 
-<section class="text-gray-700 body-font" id="skills">
-  <div class="container px-5 py-24 mx-auto">
-    <h1 class="text-4xl font-bold text-center mb-12">My <span class="text-blue-700">Skills</span></h1>
-    <div class="flex flex-wrap justify-center -m-4 text-center">
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/html.png" alt="HTML" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">HTML</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/css.png" alt="CSS" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">CSS</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/Bootstrap.png" alt="Bootstrap" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Bootstrap</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/tailwindcss.svg" alt="Tailwind CSS" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Tailwind CSS</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/javascript.png" alt="JavaScript" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">JavaScript</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/express-js.png" alt="Express JS" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Express JS</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/prisma.png" alt="Prisma" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Prisma</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/laravel.png" alt="Laravel" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Laravel</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/flutter.png" alt="Flutter" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Flutter</h2>
-        </div>
-      </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="h-64 w-full flex flex-col items-center justify-center border-2 border-gray-600 p-4 rounded-lg transform transition duration-500 hover:scale-105 bg-white">
-          <img src="/git.png" alt="Git" srcset="" class="w-40 h-40 object-contain mb-4">
-          <h2 class="title-font font-medium text-3xl text-gray-900">Git</h2>
-        </div>
-      </div>
+<section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100" id="skills">
+  <div class="container px-5 mx-auto">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">
+        My <span class="text-blue-600">Skills</span>
+      </h1>
+      <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      {
+        skillsData.skill.map((skill) => (
+          <div class="group relative bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
+            <div class="p-6 flex flex-col items-center justify-center h-48">
+              <div class="mb-4 p-3 bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-300">
+                <img
+                  src={getImagePath(skill.image)}
+                  alt={skill.name}
+                  class="w-16 h-16 object-contain"
+                />
+              </div>
+              <h2 class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
+                {skill.name}
+              </h2>
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+          </div>
+        ))
+      }
     </div>
   </div>
 </section>
-
