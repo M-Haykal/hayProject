@@ -1,63 +1,64 @@
-{
-    "projects": [
-        {
-            "name_project": "Company Profile PT Abbauf",
-            "description": "abbauf.com is a company profile of PT Abbauf Mulia Konsultan Teknologi, I created this when I was an intern at the company.",
-            "image_preview": "",
-            "link": "https://abbauf.com/",
-            "technologies": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
-            ]
-        },
-        {
-            "name_project": "Company Profile Estrong Group",
-            "description": "Company profile website for PT Estrong Nusantara Mandiri, developed during my internship at PT Abbauf Mulia Konsultan Teknologi.",
-            "image_preview": "",
-            "link": "https://estrong-group.com/",
-            "technologies": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Javascript_Logo.png/640px-Javascript_Logo.png",
-                "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/Drupal-AOSJS-Animate-On-Scroll-Javascript-Library.png?itok=p1xyMQPn",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
-            ]
-        },
-        {
-            "name_project": "Dailydone",
-            "description": "Dailydone is a task management application that I created during my internship at PT Abbauf Mulia Konsultan Teknologi.",
-            "image_preview": "",
-            "link": "https://github.com/M-Haykal/DailyDone",   
-            "technologies": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-                "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
-            ]
-        },
-        {
-            "name_project": "HayOrder Web",
-            "description": "HayOrder is a food delivery application that I created during my internship at PT Abbauf Mulia Konsultan Teknologi.",
-            "image_preview": "",
-            "link": "https://github.com/M-Haykal/HayOrder",
-            "technologies": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/640px-Postgresql_elephant.svg.png"
-            ]
-        },
-        {
-            "name_project": "HayOrder Dekstop",
-            "description": "HayOrder is a food delivery application that I created during my internship at PT Abbauf Mulia Konsultan Teknologi.",
-            "image_preview": "",
-            "link": "https://github.com/M-Haykal/HayOrder",
-            "technologies": [
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Google-flutter-logo.svg/512px-Google-flutter-logo.svg.png"
-            ]
-        }
+[
+  {
+    "name_project": "Company Profile PT Abbauf",
+    "description": "abbauf.com is a company profile of PT Abbauf Mulia Konsultan Teknologi, I created this when I was an intern at the company.",
+    "image_preview": "/projects/abbauf.png",
+    "link": "https://abbauf.com/",
+    "technologies": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
     ]
-}
+  },
+  {
+    "name_project": "Company Profile Estrong Group",
+    "description": "Company profile website for PT Estrong Nusantara Mandiri, developed during my internship at PT Abbauf Mulia Konsultan Teknologi.",
+    "image_preview": "/projects/estrong.png",
+    "link": "https://estrong-group.com/",
+    "technologies": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Javascript_Logo.png/640px-Javascript_Logo.png",
+      "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/Drupal-AOSJS-Animate-On-Scroll-Javascript-Library.png?itok=p1xyMQPn",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
+    ]
+  },
+  {
+    "name_project": "Dailydone",
+    "description": "Dailydone is a task management platform with the following features: Team collaboration, collaboration via links or email, and chat with task owners.",
+    "image_preview": "/projects/dailydone.png",
+    "link": "https://github.com/M-Haykal/DailyDone",
+    "technologies": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
+      "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
+    ]
+  },
+  {
+    "name_project": "HayOrder Web",
+    "description": "HayOrder is a platform for restaurant owners who do not yet have their own ordering system. We are here to help restaurant owners get their own ordering system.",
+    "image_preview": "/projects/hayorder.png",
+    "link": "https://github.com/M-Haykal/HayOrder",
+    "technologies": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/640px-Postgresql_elephant.svg.png"
+    ]
+  },
+  {
+    "name_project": "DiaKawan",
+    "description": "DiaKawan is a platform that supports the marketing of products produced by DiaKawan in the form of healthy foods.",
+    "image_preview": "/projects/home.png",
+    "link": "https://github.com/M-Haykal/DiaKawan.git",
+    "technologies": [
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
+      "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
+    ]
+  }
+]
