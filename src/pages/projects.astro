@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
 interface Project {
   name_project: string;
@@ -10,64 +10,63 @@ interface Project {
 }
 
 // Import JSON langsung (Astro mendukung import JSON secara native)
-import projectsData from '../data/projects.json';
+import projectsData from "../data/projects.json";
+
+interface Project {
+  name_project: string;
+  description: string;
+  image_preview: string;
+  link: string;
+  technologies: string[];
+}
 
 const projects: Project[] = projectsData;
 ---
 
-<section class="text-gray-700 body-font py-24" id="projects">
-  <div class="container px-5 mx-auto">
-    <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        My <span class="text-blue-600">Projects</span>
-      </h1>
-      <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-    </div>
+<section id="projects" class="p-10 border-b-4 border-black">
+  <h2 class="text-2xl font-semibold mb-8">Projects</h2>
 
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+    {
+      projects.map((project) => {
+        const colors = [
+          "bg-[#FFEEB7]",
+          "bg-[#BFF0C6]",
+          "bg-[#F7D6E0]",
+          "bg-[#D6E4FF]",
+          "bg-[#FFE2C6]",
+        ];
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-      {projects.map((project) => (
-        <div class="bg-white border border-gray-200 rounded-xl shadow-md overflow-hidden flex flex-col h-full transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-          <!-- Placeholder image jika image_preview kosong -->
-          <div class="bg-gray-100 border-2 border-dashed rounded-t-xl w-full h-48 flex items-center justify-center">
-            {project.image_preview ? (
-              <img src={project.image_preview} alt={project.name_project} class="w-full h-full object-cover" loading="lazy" />
-            ) : (
-              <span class="text-gray-400 text-sm">No preview</span>
-            )}
-          </div>
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-          <div class="p-6 flex flex-col flex-grow">
-            <h2 class="text-xl font-semibold text-gray-900 mb-3">
-              {project.name_project}
-            </h2>
-
-            <p class="text-sm text-gray-600 mb-4 flex-grow line-clamp-3">
-              {project.description}
-            </p>
-
-            <!-- Tech stack icons -->
-            <div class="flex flex-wrap gap-2 mb-5">
-              {project.technologies.map((tech) => (
-                <img
-                  src={tech}
-                  alt="tech logo"
-                  class="w-8 h-8 object-contain"
-                  loading="lazy"
-                />
-              ))}
+        return (
+          <div class="border-4 border-black animate-[floaty_3s_ease-in-out_infinite] hover:scale-105 transition">
+            <img
+              src={project.image_preview}
+              alt={project.name_project}
+              class="w-full h-60 object-cover border-b-4 border-black"
+            />
+            <div class={`p-6 ${randomColor} border-b-4 border-black`}>
+              <h3 class="font-bold text-lg">{project.name_project}</h3>
+              <p class="text-sm mt-2">{project.description}</p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <span class="border-2 border-black bg-white px-3 py-1 text-xs font-bold">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              <a
+                href={project.link}
+                target="_blank"
+                class="mt-4 inline-block border-4 border-black bg-white px-4 py-2 font-semibold 
+                hover:bg-gray-100 hover:scale-105 active:scale-95 transition">
+                Preview
+              </a>
             </div>
-
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mt-auto inline-block text-center px-5 py-2.5 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition">
-              View Project →
-            </a>
           </div>
-        </div>
-      ))}
-    </div>
+        );
+      })
+    }
   </div>
 </section>

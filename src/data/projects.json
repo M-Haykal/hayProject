@@ -5,10 +5,10 @@
     "image_preview": "/projects/abbauf.png",
     "link": "https://abbauf.com/",
     "technologies": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
+      "Bootstrap",
+      "Laravel",
+      "Filament",
+      "MySql"
     ]
   },
   {
@@ -17,12 +17,11 @@
     "image_preview": "/projects/estrong.png",
     "link": "https://estrong-group.com/",
     "technologies": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Javascript_Logo.png/640px-Javascript_Logo.png",
-      "https://www.drupal.org/files/styles/grid-3-2x/public/project-images/Drupal-AOSJS-Animate-On-Scroll-Javascript-Library.png?itok=p1xyMQPn",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/MySQL_textlogo.svg/640px-MySQL_textlogo.svg.png"
+      "Bootstrap",
+      "AOS JS",
+      "Laravel",
+      "Filament",
+      "MySql"
     ]
   },
   {
@@ -31,10 +30,9 @@
     "image_preview": "/projects/dailydone.png",
     "link": "https://github.com/M-Haykal/DailyDone",
     "technologies": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-      "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
+      "Bootstrap",
+      "Laravel",
+      "MySql"
     ]
   },
   {
@@ -43,10 +41,9 @@
     "image_preview": "/projects/hayorder.png",
     "link": "https://github.com/M-Haykal/HayOrder",
     "technologies": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Postgresql_elephant.svg/640px-Postgresql_elephant.svg.png"
+      "Bootstrap",
+      "Laravel",
+      "PostgreSQL"
     ]
   },
   {
@@ -55,10 +52,9 @@
     "image_preview": "/projects/home.png",
     "link": "https://github.com/M-Haykal/DiaKawan.git",
     "technologies": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Bootstrap_logo.svg/2560px-Bootstrap_logo.svg.png",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/711px-PHP-logo.svg.png?20180502235434",
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/2560px-Laravel.svg.png",
-      "https://download.logo.wine/logo/MySQL/MySQL-Logo.wine.png"
+      "Bootstrap",
+      "Laravel",
+      "MySql"
     ]
   }
 ]

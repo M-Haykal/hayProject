@@ -11,96 +11,59 @@ export let links = [
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md border border-gray-100 bg-white/80 py-3 shadow backdrop-blur-lg md:top-6 md:rounded-3xl lg:max-w-screen-lg">
-  <div class="px-4">
-    <div class="flex items-center justify-between">
-      <div class="flex shrink-0">
-        <a aria-current="page" class="flex items-center" href="/">
-          <img
-            class="h-7 w-auto border-circle border-2 rounded-full"
-            src="/logo_hayproject.jpeg"
-            alt="HayProject"
-          />
-          <p class="sr-only">HayProject</p>
+  class="flex items-center justify-between px-6 py-4 border-b-4 border-black">
+  <div class="font-bold text-xl border-2 border-black px-3 py-1">HayProject</div>
+
+  <nav id="nav-menu" class="hidden md:flex gap-6 font-semibold">
+    {
+      links.map((link) => (
+        <a
+          href={link.path}
+          class={`hover:underline ${link.path === pathname ? "active" : ""}`}>
+          {" "}
+          {link.name}{" "}
         </a>
-      </div>
+      ))
+    }
+  </nav>
 
-      <div class="hidden md:flex md:items-center md:justify-center md:gap-5">
-        {
-          links.map((link) => (
-            <a
-              class={`text-sm font-semibold transition-all duration-150 ${
-                pathname === link.path
-                  ? "text-blue-600"
-                  : "text-gray-900 hover:text-blue-600"
-              }`}
-              href={link.path}
-              {...(link.path.startsWith("#")
-                ? { "data-scroll": true, "data-target": link.path.slice(1) }
-                : {})}>
-              {link.name}
-            </a>
-          ))
-        }
-      </div>
-
-      <button
-        id="burger"
-        class="md:hidden focus:outline-none"
-        aria-label="Open Menu">
-        <svg
-          class="w-6 h-6 text-gray-900"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
-
-    <div id="mobileMenu" class="md:hidden hidden mt-4 space-y-2">
-      {
-        links.map((link) => (
-          <a
-            class={`block text-sm font-semibold px-4 py-2 rounded transition-all duration-150 ${
-              pathname === link.path
-                ? "text-blue-600"
-                : "text-gray-900 hover:text-blue-600"
-            }`}
-            href={link.path}>
-            {link.name}
-          </a>
-        ))
-      }
-    </div>
-  </div>
+  <button id="burger-btn" class="md:hidden border-2 border-black p-2">
+    <div class="w-6 h-0.5 bg-black mb-1"></div>
+    <div class="w-6 h-0.5 bg-black mb-1"></div>
+    <div class="w-6 h-0.5 bg-black"></div>
+  </button>
 </header>
 
-<script is:inline>
-  const burger = document.getElementById("burger");
-  const mobileMenu = document.getElementById("mobileMenu");
+<!-- Mobile Menu (Hidden by default) -->
+<div id="mobile-menu" class="hidden md:hidden border-b-4 border-black bg-white">
+  <nav class="flex flex-col p-4 gap-3 font-semibold">
+    {
+      links.map((link) => (
+        <a
+          href={link.path}
+          class={`hover:underline ${link.path === pathname ? "active" : ""}`}>
+          {" "}
+          {link.name}{" "}
+        </a>
+      ))
+    }
+  </nav>
+</div>
 
-  burger.addEventListener("click", () => {
+<script is:inline>
+  // Burger menu functionality
+  const burgerBtn = document.getElementById("burger-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  burgerBtn.addEventListener("click", () => {
     mobileMenu.classList.toggle("hidden");
   });
 
-  document.querySelectorAll('a[data-scroll="true"]').forEach((el) => {
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = el.getAttribute("data-target");
-      const targetEl = document.getElementById(targetId);
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth" });
-
-        if (!mobileMenu.classList.contains("hidden")) {
-          mobileMenu.classList.add("hidden");
-        }
-      }
+  // Close mobile menu when clicking on a link
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
     });
   });
 </script>

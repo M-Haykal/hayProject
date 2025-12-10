@@ -2,238 +2,77 @@
 export let title = "Contacts";
 ---
 
-<div class="relative isolate bg-white" id="contacts">
-  <div class="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
-    <div class="relative px-6 pb-20 pt-24 sm:pt-32 lg:static lg:px-8 lg:py-32">
-      <div class="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-        <div
-          class="absolute inset-y-0 left-0 -z-10 w-full overflow-hidden bg-gray-100 ring-1 ring-gray-900/10 lg:w-1/2">
-          <svg
-            class="absolute inset-0 h-full w-full stroke-gray-200 [mask-image:radial-gradient(100%_100%_at_top_right,white,transparent)]"
-            aria-hidden="true">
-            <defs>
-              <pattern
-                id="83fd4e5a-9d52-42fc-97b6-718e5d7ee527"
-                width="200"
-                height="200"
-                x="100%"
-                y="-1"
-                patternUnits="userSpaceOnUse">
-                <path d="M130 200V.5M.5 .5H200" fill="none"></path>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" stroke-width="0" fill="white"
-            ></rect><svg x="100%" y="-1" class="overflow-visible fill-gray-50">
-              <path d="M-470.5 0h201v201h-201Z" stroke-width="0"></path>
-            </svg>
-            <rect
-              width="100%"
-              height="100%"
-              stroke-width="0"
-              fill="url(#83fd4e5a-9d52-42fc-97b6-718e5d7ee527)"></rect>
-          </svg>
-        </div>
-        <h2 class="text-3xl font-bold tracking-tight text-blue-700">
-          Contact Us
-        </h2>
-        <p class="mt-6 text-lg leading-8 text-gray-600">
-          If you have any questions, feedback, or just want to say hello, feel
-          free to reach out to us. We would love to hear from you!
-        </p>
-        <dl class="mt-10 space-y-4 text-base leading-7 text-gray-600">
-          <div class="flex gap-x-4">
-            <dt class="flex-none">
-              <span class="sr-only">Email</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-                class="h-7 w-6 text-gray-400">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75">
-                </path>
-              </svg>
-            </dt>
-            <dd>
-              <a
-                class="hover:text-gray-900"
-                href="mailto:haykalmuhammad456@gmail.com"
-                >haykalmuhammad456@gmail.com</a
-              >
-            </dd>
-          </div>
-          <div class="flex gap-x-4">
-            <dt class="flex-none">
-              <span class="sr-only">Instagram</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                aria-hidden="true"
-                class="h-7 w-6 text-gray-400">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M16.5 3.75h-9a4.5 4.5 0 00-4.5 4.5v7.5a4.5 4.5 0 004.5 4.5h9a4.5 4.5 0 004.5-4.5v-7.5a4.5 4.5 0 00-4.5-4.5z"
-                ></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"></path>
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M17.25 6.75h.008v.008h-.008V6.75z"></path>
-              </svg>
-            </dt>
-            <dd>
-              <a
-                class="hover:text-gray-900"
-                href="https://www.instagram.com/hay_hekall/"
-                target="_blank"
-                rel="noopener noreferrer">
-                @hay_hekall
-              </a>
-            </dd>
-          </div>
-          <div class="flex gap-x-4 items-center">
-            <dt class="flex-none">
-              <span class="sr-only">GitHub</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="h-6 w-6 text-gray-400">
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12 2C6.477 2 2 6.477 2 12a10 10 0 007 9.54c.512.093.7-.223.7-.497v-1.688c-2.862.623-3.463-1.38-3.463-1.38-.466-1.186-1.138-1.503-1.138-1.503-.93-.635.07-.622.07-.622 1.028.072 1.57 1.056 1.57 1.056.914 1.565 2.396 1.113 2.98.85.092-.662.357-1.113.65-1.37-2.285-.26-4.688-1.143-4.688-5.086 0-1.123.397-2.04 1.05-2.76-.105-.26-.455-1.307.1-2.726 0 0 .86-.275 2.82 1.05a9.836 9.836 0 012.56-.345c.87.004 1.75.117 2.56.345 1.96-1.325 2.82-1.05 2.82-1.05.555 1.42.205 2.466.1 2.726.653.72 1.05 1.637 1.05 2.76 0 3.95-2.405 4.823-4.695 5.08.365.32.69.935.69 1.887v2.8c0 .277.187.593.7.497A10 10 0 0022 12c0-5.523-4.477-10-10-10z"
-                ></path>
-              </svg>
-            </dt>
-            <dd>
-              <a
-                href="https://github.com/M-Haykal"
-                target="_blank"
-                class="hover:text-gray-900">github.com/M-Haykal</a
-              >
-            </dd>
-          </div>
-          <div class="flex gap-x-4">
-            <dt class="flex-none">
-              <span class="sr-only">Linkedin</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                class="h-6 w-6 text-gray-400"
-                viewBox="0 0 24 24">
-                <path
-                  d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.08 8.11H4.92V24H.08V8.11zM7.04 8.11h4.58v2.17h.07c.64-1.2 2.2-2.47 4.52-2.47 4.84 0 5.73 3.18 5.73 7.31V24H17.6v-6.91c0-1.65-.03-3.76-2.3-3.76-2.3 0-2.65 1.8-2.65 3.65V24H7.04V8.11z"
-                ></path>
-              </svg>
-            </dt>
-            <dd>
-              <a
-                class="hover:text-gray-900"
-                href="www.linkedin.com/in/muhammad-haykal-b447582b2"
-                >Muhammad Haykal</a
-              >
-            </dd>
-          </div>
-          <div class="flex gap-x-4">
-            <dt class="flex-none">
-              <span class="sr-only">WhatsApp</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                class="h-6 w-6 text-gray-400"
-                viewBox="0 0 24 24">
-                <path
-                  d="M20.52 3.48A11.8 11.8 0 0012 0C5.37 0 0 5.37 0 12a11.84 11.84 0 001.63 6.03L0 24l6.29-1.65A11.9 11.9 0 0012 24c6.63 0 12-5.37 12-12 0-3.19-1.24-6.18-3.48-8.52zM12 22c-1.68 0-3.31-.44-4.75-1.26l-.34-.2-3.73.98.99-3.64-.22-.38A9.93 9.93 0 012 12C2 6.48 6.48 2 12 2s10 4.48 10 10-4.48 10-10 10zm5.16-7.47c-.28-.14-1.65-.81-1.9-.9-.25-.1-.43-.14-.6.14s-.69.9-.85 1.08c-.16.18-.31.2-.59.07s-1.15-.42-2.2-1.34c-.81-.72-1.35-1.61-1.51-1.88s-.02-.42.12-.56c.12-.12.27-.31.41-.46.13-.14.18-.25.27-.41.09-.17.05-.31 0-.45-.05-.14-.6-1.44-.82-1.98-.22-.53-.45-.46-.6-.47h-.51c-.17 0-.44.06-.67.31s-.88.86-.88 2.1.9 2.44 1.03 2.61c.13.17 1.76 2.68 4.27 3.76.6.26 1.07.42 1.44.54.61.19 1.17.16 1.61.1.49-.07 1.5-.61 1.71-1.2.21-.6.21-1.11.14-1.2-.07-.09-.25-.14-.52-.28z"
-                ></path>
-              </svg>
-            </dt>
-            <dd>
-              <a
-                class="hover:text-gray-900"
-                href="https://api.whatsapp.com/send?phone=6289509758465"
-                >Send a WhatsApp message</a
-              >
-            </dd>
-          </div>
-        </dl>
-      </div>
-    </div>
-    <form class="px-6 pb-24 pt-20 sm:pb-32 lg:px-8 lg:py-32">
-      <div class="mx-auto max-w-xl lg:mr-0 lg:max-w-lg">
-        <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
-          <div>
-            <label
-              for="first-name"
-              class="block text-sm font-semibold leading-6 text-gray-900"
-              >First name</label
-            >
-            <div class="mt-2.5">
-              <input
-                type="text"
-                id="first-name"
-                autocomplete="given-name"
-                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="firstName"
-              />
-            </div>
-          </div>
-          <div>
-            <label
-              for="last-name"
-              class="block text-sm font-semibold leading-6 text-gray-900"
-              >Last name</label
-            >
-            <div class="mt-2.5">
-              <input
-                type="text"
-                id="last-name"
-                autocomplete="family-name"
-                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="lastName"
-              />
-            </div>
-          </div>
-          <div class="sm:col-span-2">
-            <label
-              for="message"
-              class="block text-sm font-semibold leading-6 text-gray-900"
-              >Message</label
-            >
-            <div class="mt-2.5">
-              <textarea
-                id="message"
-                rows="4"
-                class="block w-full rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                name="message"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="mt-8 flex justify-end">
-          <button
-            type="submit"
-            class="w-max rounded-2xl border-2 border-[#0057ff] bg-[#0057ff] px-5 py-1.5 text-sm font-semibold text-white transition-colors duration-150 ease-in-out hover:border-blue-400 hover:bg-blue-400"
-            onclick="sendMessage()">Send message</button
-          >
-        </div>
-      </div>
+<section id="contact" class="p-10">
+  <h2 class="text-2xl font-semibold mb-6">Contact</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+    <!-- CONTACT FORM -->
+    <form class="grid grid-cols-1 gap-4">
+      <input
+        type="text"
+        id="first-name"
+        placeholder="First Name"
+        class="border-4 border-black p-3"
+      />
+      <input
+        type="text"
+        id="last-name"
+        placeholder="Last Name"
+        class="border-4 border-black p-3"
+      />
+      <textarea placeholder="Message" class="border-4 border-black p-3 h-32"
+      ></textarea>
+
+      <button
+        class="border-4 border-black px-6 py-3 bg-yellow-300 font-semibold hover:bg-yellow-400">
+        Send Message
+      </button>
     </form>
+
+    <!-- SOCIAL MEDIA LIST -->
+    <div class="flex flex-col gap-4">
+      <a
+        href="https://www.instagram.com/hay_hekall/"
+        class="border-4 border-black p-4 flex items-center justify-between bg-white
+         hover:bg-gray-50 hover:translate-x-2 transition">
+        <span class="font-semibold">Instagram</span>
+        <span>@hay_hekall</span>
+      </a>
+
+      <a
+        href="www.linkedin.com/in/muhammad-haykal-b447582b2"
+        class="border-4 border-black p-4 flex items-center justify-between bg-white
+         hover:bg-gray-50 hover:translate-x-2 transition">
+        <span class="font-semibold">LinkedIn</span>
+        <span>Muhammad Haykal</span>
+      </a>
+
+      <a
+        href="https://api.whatsapp.com/send?phone=6289509758465"
+        class="border-4 border-black p-4 flex items-center justify-between bg-white
+         hover:bg-gray-50 hover:translate-x-2 transition">
+        <span class="font-semibold">WhatsApp</span>
+        <span>+62 8950 9758 465</span>
+      </a>
+
+      <a
+        href="mailto:haykalmuhammad456@mail.com"
+        class="border-4 border-black p-4 flex items-center justify-between bg-white
+         hover:bg-gray-50 hover:translate-x-2 transition">
+        <span class="font-semibold">Email</span>
+        <span>haykalmuhammad456@mail.com</span>
+      </a>
+
+      <a
+        href="https://github.com/M-Haykal"
+        class="border-4 border-black p-4 flex items-center justify-between bg-white
+         hover:bg-gray-50 hover:translate-x-2 transition">
+        <span class="font-semibold">GitHub</span>
+        <span>github.com/M-Haykal</span>
+      </a>
+    </div>
   </div>
-</div>
+</section>
 
 <script is:inline>
   function sendMessage() {

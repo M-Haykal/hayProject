@@ -14,10 +14,47 @@ import { ViewTransitions } from "astro:transitions";
     <meta name="generator" content={Astro.generator} />
     <ViewTransitions />
     <title>HayProject</title>
+    <style>
+      @keyframes floaty {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-6px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes wigglecute {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(2deg);
+        }
+      }
+
+      @keyframes popin {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
-  <body class="">
-    <Navbar />
-    <slot />
-    <Footer />
+  <body class="bg-[#C9ECF5] font-sans">
+    <div class="max-w-6xl mx-auto mt-10 border-4 border-black bg-white">
+      <Navbar />
+
+      <slot />
+      <!-- <Footer /> -->
+    </div>
   </body>
 </html>

@@ -7,37 +7,24 @@ function getImagePath(image: string) {
 }
 ---
 
-<section class="py-20 bg-gradient-to-br from-gray-50 to-gray-100" id="skills">
-  <div class="container px-5 mx-auto">
-    <div class="text-center mb-16">
-      <h1 class="text-4xl md:text-5xl font-bold mb-4">
-        My <span class="text-blue-600">Skills</span>
-      </h1>
-      <div class="w-24 h-1 bg-blue-600 mx-auto rounded-full"></div>
-    </div>
+<section id="skills" class="p-10 border-b-4 border-black">
+  <h2 class="text-2xl font-semibold mb-6">Skills</h2>
 
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-      {
-        skillsData.skill.map((skill) => (
-          <div class="group relative bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-500 to-indigo-600 opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
-            <div class="p-6 flex flex-col items-center justify-center h-48">
-              <div class="mb-4 p-3 bg-blue-50 rounded-full group-hover:bg-blue-100 transition-colors duration-300">
-                <img
-                  src={getImagePath(skill.image)}
-                  alt={skill.name}
-                  class="w-16 h-16 object-contain"
-                />
-              </div>
-              <h2 class="text-xl font-semibold text-gray-800 group-hover:text-blue-600 transition-colors duration-300">
-                {skill.name}
-              </h2>
-            </div>
-            <div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    {
+      skillsData.skill.map((skill) => (
+        <div class="flex flex-col items-center p-4 border-2 border-black rounded-lg hover:animate-[wigglecute_0.4s_ease-in-out] transition">
+          <div class="mb-4 p-3 bg-blue-50 rounded-full">
+            <img
+              src={getImagePath(skill.image)}
+              alt={skill.name}
+              class="w-16 h-16 object-contain"
+              loading="lazy"
+            />
           </div>
-        ))
-      }
-    </div>
+          <h3 class="text-lg font-medium">{skill.name}</h3>
+        </div>
+      ))
+    }
   </div>
 </section>
