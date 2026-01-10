@@ -1,69 +1,34 @@
 ---
 export let title = "Navbar";
-const { pathname } = Astro.url;
-export let links = [
-  { name: "Home", path: "#home" },
-  { name: "About", path: "#about" },
-  { name: "Skills", path: "#skills" },
-  { name: "Project", path: "#projects" },
-  { name: "Contact", path: "#contacts" },
-];
 ---
 
 <header
-  class="flex items-center justify-between px-6 py-4 border-b-4 border-black">
-  <div class="font-bold text-xl border-2 border-black px-3 py-1">HayProject</div>
-
-  <nav id="nav-menu" class="hidden md:flex gap-6 font-semibold">
-    {
-      links.map((link) => (
-        <a
-          href={link.path}
-          class={`hover:underline ${link.path === pathname ? "active" : ""}`}>
-          {" "}
-          {link.name}{" "}
-        </a>
-      ))
-    }
-  </nav>
-
-  <button id="burger-btn" class="md:hidden border-2 border-black p-2">
-    <div class="w-6 h-0.5 bg-black mb-1"></div>
-    <div class="w-6 h-0.5 bg-black mb-1"></div>
-    <div class="w-6 h-0.5 bg-black"></div>
-  </button>
+  class="flex items-center justify-between bg-[#2d2d2d] px-4 py-1 select-none">
+  <div class="flex items-center gap-4">
+    <div class="flex gap-2 mr-4">
+      <div class="w-3.5 h-3.5 rounded-full bg-[#ff5f56]"></div>
+      <div class="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]"></div>
+      <div class="w-3.5 h-3.5 rounded-full bg-[#27c93f]"></div>
+    </div>
+    <div class="flex items-center gap-6">
+      <div class="flex items-center gap-2">
+        <span class="text-xs text-gray-400">File</span>
+        <span class="text-xs text-gray-400">Edit</span>
+        <span class="text-xs text-gray-400">Selection</span>
+        <span class="text-xs text-gray-400">View</span>
+        <span class="text-xs text-gray-400">Go</span>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-title flex-1 text-center text-xs text-gray-400"></div>
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-gray-400 !text-sm">search</span>
+    <div
+      class="flex items-center gap-2 px-2 py-0.5 bg-[#3c3c3c] rounded text-[10px] text-gray-300">
+      <span class="material-symbols-outlined !text-xs"
+        >keyboard_command_key</span
+      >
+      <span>P</span>
+    </div>
+  </div>
 </header>
-
-<!-- Mobile Menu (Hidden by default) -->
-<div id="mobile-menu" class="hidden md:hidden border-b-4 border-black bg-white">
-  <nav class="flex flex-col p-4 gap-3 font-semibold">
-    {
-      links.map((link) => (
-        <a
-          href={link.path}
-          class={`hover:underline ${link.path === pathname ? "active" : ""}`}>
-          {" "}
-          {link.name}{" "}
-        </a>
-      ))
-    }
-  </nav>
-</div>
-
-<script is:inline>
-  // Burger menu functionality
-  const burgerBtn = document.getElementById("burger-btn");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  burgerBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-  });
-
-  // Close mobile menu when clicking on a link
-  const mobileLinks = mobileMenu.querySelectorAll("a");
-  mobileLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-      mobileMenu.classList.add("hidden");
-    });
-  });
-</script>

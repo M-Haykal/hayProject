@@ -1,0 +1,157 @@
+---
+export let title = "Sidebar";
+---
+
+<!-- Sidebar / Main -->
+<aside class="w-12 bg-[#333333] flex flex-col items-center py-4 gap-6">
+  <div
+    class="text-white border-l-2 border-primary pl-1 w-full flex justify-center cursor-pointer">
+    <span class="material-symbols-outlined !text-2xl">file_copy</span>
+  </div>
+  <div class="text-gray-500 hover:text-white cursor-pointer transition-colors">
+    <span class="material-symbols-outlined !text-2xl">search</span>
+  </div>
+  <div class="text-gray-500 hover:text-white cursor-pointer transition-colors">
+    <span class="material-symbols-outlined !text-2xl">account_tree</span>
+  </div>
+  <div class="text-gray-500 hover:text-white cursor-pointer transition-colors">
+    <span class="material-symbols-outlined !text-2xl">play_arrow</span>
+  </div>
+  <div class="text-gray-500 hover:text-white cursor-pointer transition-colors">
+    <span class="material-symbols-outlined !text-2xl">extension</span>
+  </div>
+  <div class="mt-auto flex flex-col gap-6">
+    <div class="text-gray-500 hover:text-white cursor-pointer">
+      <span class="material-symbols-outlined !text-2xl">account_circle</span>
+    </div>
+    <div class="text-gray-500 hover:text-white cursor-pointer">
+      <span class="material-symbols-outlined !text-2xl">settings</span>
+    </div>
+  </div>
+</aside>
+
+<!-- Sidebar / Explorer -->
+<aside class="w-64 bg-[#181818] border-r border-[#2b2b2b] flex flex-col">
+  <div class="px-4 py-3 flex items-center justify-between">
+    <h2 class="text-[11px] font-bold uppercase tracking-wider text-gray-400">
+      Explorer
+    </h2>
+    <span class="material-symbols-outlined !text-sm text-gray-400"
+      >more_horiz</span
+    >
+  </div>
+  <div class="flex-1 overflow-y-auto">
+    <!-- Project Section -->
+    <div class="flex flex-col">
+      <div
+        class="flex items-center gap-1 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer">
+        <span class="material-symbols-outlined !text-sm text-gray-400"
+          >expand_more</span
+        >
+        <span class="text-[11px] font-bold text-gray-300 uppercase"
+          >PORTFOLIO</span
+        >
+      </div>
+      <div class="flex flex-col exporer-content">
+        <!-- File: About.js -->
+        <div
+          class="flex items-center gap-2 px-6 py-1 bg-[#37373d] cursor-pointer"
+          data-file="About.js"
+          data-page="About">
+          <span class="material-symbols-outlined !text-sm text-yellow-500"
+            >javascript</span
+          >
+          <span class="text-sm text-white">About.js</span>
+        </div>
+        <!-- File: Projects.py -->
+        <div
+          class="flex items-center gap-2 px-6 py-1 hover:bg-[#2a2d2e] cursor-pointer"
+          data-file="Projects.py"
+          data-page="Projects">
+          <span class="material-symbols-outlined !text-sm text-orange-400"
+            >html</span
+          >
+          <span class="text-sm text-gray-400">Projects.py</span>
+        </div>
+        <!-- File: Contact.ts -->
+        <div
+          class="flex items-center gap-2 px-6 py-1 hover:bg-[#2a2d2e] cursor-pointer"
+          data-file="Contact.ts"
+          data-page="Contact">
+          <span class="material-symbols-outlined !text-sm text-purple-500"
+            >php</span
+          >
+          <span class="text-sm text-gray-400">Contact.ts</span>
+        </div>
+      </div>
+    </div>
+    <!-- Outline Section -->
+    <div class="mt-4 border-t border-[#2b2b2b]">
+      <div
+        class="flex items-center gap-1 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer">
+        <span class="material-symbols-outlined !text-sm text-gray-400"
+          >chevron_right</span
+        >
+        <span class="text-[11px] font-bold text-gray-300 uppercase"
+          >OUTLINE</span
+        >
+      </div>
+    </div>
+  </div>
+</aside>
+<!-- End of Sidebar / Explorer -->
+
+<!-- <script client:load>
+  const fileItems = document.querySelectorAll(".file-item");
+  const tabBar = document.querySelector(".tab-bar");
+  const breadcrumb = document.querySelector(".breadcrumb");
+  const navbarTitle = document.querySelector(".navbar-title");
+  const pages = document.querySelectorAll("[data-page]");
+
+  const icons = {
+    js: "javascript",
+    py: "terminal",
+    ts: "description",
+  };
+
+  function getIcon(file) {
+    const ext = file.split(".").pop();
+    return icons[ext] || "description";
+  }
+
+  fileItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const file = item.dataset.file;
+      const page = item.dataset.page;
+
+      // Update Tab Bar
+      tabBar.innerHTML = `
+        <div class="flex items-center px-4 gap-2 bg-[#1e1e1e] border-t border-primary h-full cursor-default min-w-[120px]">
+          <span class="material-symbols-outlined !text-sm text-yellow-500">${getIcon(file)}</span>
+          <span class="text-xs text-white">${file}</span>
+          <span class="material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto cursor-pointer">close</span>
+        </div>
+      `;
+
+      // Update Breadcrumb
+      breadcrumb.innerHTML = `
+        <span>src</span>
+        <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
+        <span>pages</span>
+        <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
+        <div class="flex items-center gap-1">
+          <span class="material-symbols-outlined !text-[14px] text-yellow-500">${getIcon(file)}</span>
+          <span class="text-gray-300">${file}</span>
+        </div>
+      `;
+
+      // Update Navbar Title
+      navbarTitle.textContent = `${file} — Portfolio — Visual Studio Code`;
+
+      // Show relevant page
+      pages.forEach((p) => (p.style.display = "none"));
+      const targetPage = document.querySelector(`[data-page="${page}"]`);
+      if (targetPage) targetPage.style.display = "block";
+    });
+  });
+</script> -->

@@ -1,6 +1,8 @@
 ---
 import Navbar from "../components/sections/navbar.astro";
 import Footer from "../components/sections/footer.astro";
+import IntroAnimation from "../components/IntroAnimation.astro";
+import Sidebar from "../components/sections/sidebar.astro";
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
 ---
@@ -9,10 +11,21 @@ import { ViewTransitions } from "astro:transitions";
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/logo_hayproject.jpeg" />
-    <link rel="stylesheet" href="/styles/global.css" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <ViewTransitions />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
     <title>HayProject</title>
     <style>
       @keyframes floaty {
@@ -47,14 +60,44 @@ import { ViewTransitions } from "astro:transitions";
           opacity: 1;
         }
       }
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+        font-size: 22px;
+      }
+      .syntax-keyword {
+        color: #569cd6;
+      }
+      .syntax-string {
+        color: #ce9178;
+      }
+      .syntax-property {
+        color: #9cdcfe;
+      }
+      .syntax-comment {
+        color: #6a9955;
+      }
+      .syntax-const {
+        color: #4fc1ff;
+      }
+      .syntax-bracket {
+        color: #ffd700;
+      }
     </style>
   </head>
-  <body class="bg-[#C9ECF5] font-sans">
-    <div class="max-w-6xl mx-auto mt-10 border-4 border-black bg-white">
-      <Navbar />
-
+  <body
+    class="bg-background-light dark:bg-background-dark font-display text-white overflow-hidden h-screen flex flex-col">
+    <!-- <IntroAnimation /> -->
+    <Navbar />
+    <div class="flex flex-1 overflow-hidden">
+      <Sidebar />
       <slot />
-      <!-- <Footer /> -->
     </div>
+    <Footer />
+
+    <!-- <script src="../scripts/interaksi.js"></script> -->
   </body>
 </html>

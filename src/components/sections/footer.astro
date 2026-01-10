@@ -2,8 +2,46 @@
 export let title = "Footer";
 ---
 
-<footer class="bg-blue-800 text-white p-4 flex justify-center">
-  <p class="text-center">
-    &copy; {new Date().getFullYear()} - Made with <span class="text-red-500">❤</span> by HayProject.
-  </p>
+<footer
+  class="h-6 bg-primary flex items-center justify-between px-3 text-[11px] text-white">
+  <div class="flex items-center h-full">
+    <div
+      class="flex items-center gap-1 px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span class="material-symbols-outlined !text-[12px]">account_tree</span>
+      <span>main*</span>
+    </div>
+    <div
+      class="flex items-center gap-1 px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span class="material-symbols-outlined !text-[12px]">sync</span>
+    </div>
+    <div
+      class="flex items-center gap-1 px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span class="material-symbols-outlined !text-[12px]">error</span>
+      <span>0</span>
+      <span class="material-symbols-outlined !text-[12px]">warning</span>
+      <span>0</span>
+    </div>
+  </div>
+  <div class="flex items-center h-full">
+    <div
+      class="flex items-center px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span>Ln 1, Col 1</span>
+    </div>
+    <div
+      class="flex items-center px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span>Spaces: 2</span>
+    </div>
+    <div
+      class="flex items-center px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span>UTF-8</span>
+    </div>
+    <div
+      class="flex items-center px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span>JavaScript</span>
+    </div>
+    <div
+      class="flex items-center px-2 hover:bg-white/10 cursor-pointer h-full transition-colors">
+      <span class="material-symbols-outlined !text-[14px]">notifications</span>
+    </div>
+  </div>
 </footer>

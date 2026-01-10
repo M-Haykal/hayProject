@@ -5,12 +5,23 @@ import About from "./about.astro";
 import Skills from "./skills.astro";
 import Projects from "./projects.astro";
 import Contacts from "./contacts.astro";
+import TabBar from "../components/sections/tabBar.astro";
 ---
 
 <MainLayouts>
-  <Home />
-  <About />
-  <Skills />
-  <Projects />
-  <Contacts />
+  <main class="flex-1 flex flex-col bg-[#1e1e1e] overflow-hidden">
+    <TabBar />
+    <div
+      id="content"
+      class="flex-1 font-mono text-sm leading-6 overflow-auto bg-[#1e1e1e] flex">
+      <div
+        class="flex-1 font-mono text-sm leading-6 overflow-auto bg-[#1e1e1e] flex">
+        <div data-page="home" style="display:none;"><Home /></div>
+        <div data-page="about" style="display:none;"><About /></div>
+        <div data-page="skills" style="display:none;"><Skills /></div>
+        <div data-page="projects" style="display:none;"><Projects /></div>
+        <div data-page="contacts" style="display:none;"><Contacts /></div>
+      </div>
+    </div>
+  </main>
 </MainLayouts>

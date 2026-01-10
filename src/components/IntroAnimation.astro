@@ -1,0 +1,221 @@
+---
+// components/IntroScreen.astro
+---
+
+<!-- Intro Screen -->
+<div
+  id="intro-screen"
+  class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#C9ECF5]">
+  <div class="text-center">
+    <h1
+      id="intro-text"
+      class="text-8xl font-black cursor-pointer hover:scale-110 transition-transform duration-300 select-none"
+      style="
+        text-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+        letter-spacing: -0.02em;
+      ">
+      HayProject
+    </h1>
+    <p class="mt-6 text-xl text-gray-700 animate-pulse">Click to enter</p>
+  </div>
+</div>
+
+<!-- Morph Animation Screen -->
+<div
+  id="morph-screen"
+  class="fixed inset-0 z-50 hidden items-center justify-center bg-[#C9ECF5]">
+  <svg width="600" height="600" viewBox="0 0 600 600" class="w-full max-w-2xl">
+    <path
+      id="morphPath"
+      d="M300,150 Q450,150 450,300 Q450,450 300,450 Q150,450 150,300 Q150,150 300,150"
+      fill="rgba(0,0,0,0.1)"
+      stroke="#000"
+      stroke-width="3"></path>
+  </svg>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+
+  const introScreen = document.getElementById("intro-screen");
+  const morphScreen = document.getElementById("morph-screen");
+  const morphPath = document.getElementById("morphPath");
+  const introText = document.getElementById("intro-text");
+
+  // Shapes untuk morph animation
+  const shapes = [
+    "M300,150 Q450,150 450,300 Q450,450 300,450 Q150,450 150,300 Q150,150 300,150", // Circle
+    "M200,150 L400,150 Q450,150 450,200 L450,400 Q450,450 400,450 L200,450 Q150,450 150,400 L150,200 Q150,150 200,150", // Square
+    "M300,150 L450,400 Q450,450 400,450 L200,450 Q150,450 150,400 Z", // Triangle
+    "M300,150 L340,260 L450,280 L370,360 L390,470 L300,410 L210,470 L230,360 L150,280 L260,260 Z", // Star
+    "M300,150 L450,300 L300,450 L150,300 Z", // Diamond
+    "M240,150 L360,150 L450,300 L360,450 L240,450 L150,300 Z", // Hexagon
+    "M150,300 Q200,150 300,200 Q400,250 450,300 Q400,450 300,400 Q200,350 150,300", // Wave
+    "M300,150 Q380,180 420,250 Q450,320 410,390 Q350,450 280,430 Q210,410 170,350 Q140,280 180,220 Q220,160 300,150", // Blob
+  ];
+
+  // Flag untuk mencegah double click
+  let isAnimating = false;
+
+  // Event listener untuk intro text
+  introText?.addEventListener("click", () => {
+    if (isAnimating) return;
+    isAnimating = true;
+
+    // Animasi text keluar
+    gsap.to(introText, {
+      scale: 0,
+      rotation: 360,
+      opacity: 0,
+      duration: 0.8,
+      ease: "back.in",
+      onComplete: () => {
+        // Hide intro screen
+        introScreen.style.display = "none";
+
+        // Show morph screen
+        morphScreen.classList.remove("hidden");
+        morphScreen.classList.add("flex");
+
+        // Start morph animation
+        startMorphAnimation();
+      },
+    });
+  });
+
+  function startMorphAnimation() {
+    // Reset path
+    gsap.set(morphPath, {
+      attr: { d: shapes[0] },
+      rotation: 0,
+      scale: 1,
+    });
+
+    // Create animation timeline
+    const tl = gsap.timeline({
+      onComplete: () => {
+        // Fade out morph screen dan show main content
+        gsap.to(morphScreen, {
+          opacity: 0,
+          duration: 0.6,
+          onComplete: () => {
+            morphScreen.style.display = "none";
+
+            // Show main content dengan fade in
+            const mainContent = document.querySelector(".main-content");
+            if (mainContent) {
+              gsap.fromTo(
+                mainContent,
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+              );
+            }
+          },
+        });
+      },
+    });
+
+    // Loop through shapes dengan timing yang smooth
+    shapes.forEach((shape, index) => {
+      tl.to(morphPath, {
+        attr: { d: shape },
+        duration: 0.6,
+        ease: "power2.inOut",
+      });
+
+      // Add rotation dan scale variation
+      if (index % 3 === 0) {
+        tl.to(
+          morphPath,
+          {
+            rotation: `+=${120}`,
+            scale: 1.15,
+            duration: 0.6,
+            ease: "power2.inOut",
+            transformOrigin: "center center",
+          },
+          `-=0.6`
+        );
+      } else if (index % 3 === 1) {
+        tl.to(
+          morphPath,
+          {
+            rotation: `-=${90}`,
+            scale: 0.85,
+            duration: 0.6,
+            ease: "power2.inOut",
+            transformOrigin: "center center",
+          },
+          `-=0.6`
+        );
+      } else {
+        tl.to(
+          morphPath,
+          {
+            scale: 1,
+            duration: 0.6,
+            ease: "power2.inOut",
+            transformOrigin: "center center",
+          },
+          `-=0.6`
+        );
+      }
+    });
+
+    // Final burst animation
+    tl.to(morphPath, {
+      scale: 2,
+      opacity: 0,
+      rotation: "+=360",
+      duration: 0.8,
+      ease: "power2.in",
+    });
+  }
+
+  // Animasi masuk untuk intro text
+  gsap.from(introText, {
+    scale: 0,
+    rotation: -180,
+    opacity: 0,
+    duration: 1.2,
+    ease: "elastic.out(1, 0.5)",
+    delay: 0.3,
+  });
+</script>
+
+<style>
+  #intro-screen {
+    background: linear-gradient(135deg, #c9ecf5 0%, #a8d8e8 100%);
+  }
+
+  #intro-text {
+    background: linear-gradient(45deg, #000, #333, #000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: floaty 3s ease-in-out infinite;
+  }
+
+  @keyframes floaty {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-15px);
+    }
+  }
+
+  #morph-screen {
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
