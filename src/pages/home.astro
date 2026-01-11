@@ -1,39 +1,80 @@
 ---
-export let title = "home";
+export let title = "Home.css";
 ---
 
 <section
-  id="hero"
-  class="grid grid-cols-1 md:grid-cols-2 border-b-4 border-black">
-  <div class="p-10 flex flex-col justify-center">
-    <h1 class="text-4xl font-bold">Hi, I'm </h1>
-    <h1 class="text-4xl font-bold"><span id="typed"></span></h1>
-    <p class="mt-4 text-lg">
-      A collection of my projects, skills, and experiences. Explore my work and
-      get to know me better.
-    </p>
-    <a
-      href="#projects"
-      class="mt-6 inline-block border-4 border-black px-5 py-2 bg-yellow-300 font-semibold hover:bg-yellow-400 text-center transition">
-      View Projects
-    </a>
+  class="font-mono text-sm leading-6 bg-[#1e1e1e] text-gray-300 p-10 border-b border-[#2d2d2d]">
+  <!-- Comment -->
+  <div class="text-[#6a9955] mb-4">/* Home.css */</div>
+
+  <!-- Selector -->
+  <div class="code-block">
+    <!-- Selector -->
+    <div class="text-[#dcdcaa]">
+      .hero <span class="text-white">{} </span>
+
+      <!-- Properties INSIDE -->
+      <div class="pl-6">
+        <div>
+          <span class="text-[#9cdcfe]">name</span><span class="text-white"
+            >:</span
+          >
+          <span class="text-[#ce9178]" id="typed"></span><span
+            class="text-white">;</span
+          >
+        </div>
+
+        <div>
+          <span class="text-[#9cdcfe]">role</span><span class="text-white"
+            >:</span
+          >
+          <span class="text-[#ce9178]">"Junior Programmer"</span><span
+            class="text-white">;</span
+          >
+        </div>
+
+        <div>
+          <span class="text-[#9cdcfe]">description</span><span
+            class="text-white">:</span
+          >
+          <span class="text-[#ce9178]">
+            "A collection of my projects, skills, and experiences. Explore my
+            work and get to know me better."
+          </span><span class="text-white">;</span>
+        </div>
+
+        <div>
+          <span class="text-[#9cdcfe]">status</span><span class="text-white"
+            >:</span
+          >
+          <span class="text-[#4fc1ff]">active</span><span class="text-white"
+            >;</span
+          >
+        </div>
+      </div>
+
+      <!-- Closing -->
+      <div class="text-white">}</div>
+    </div>
   </div>
 
-  <div class="border-l-4 border-black">
-    <img src="/haykal.png" class="w-full h-full object-cover animate-[popin_0.7s_ease]" loading="lazy" />
-  </div>
+  <!-- Fake button as CSS -->
+  <div class="mt-6 text-[#6a9955]">/* Scroll to projects */</div>
+
+  <a href="#projects" class="inline-block mt-2 text-[#d7ba7d] hover:underline">
+    .view-projects();
+  </a>
 </section>
 
 <script>
   import Typed from "typed.js";
 
-  // Tunggu sampai DOM siap
   window.addEventListener("DOMContentLoaded", () => {
-    const typed = new Typed("#typed", {
-      strings: ["Muhammad Haykal", "HayProject"],
+    new Typed("#typed", {
+      strings: ['"Muhammad Haykal"', '"HayProject"'],
       typeSpeed: 50,
-      backSpeed: 50,
-      backDelay: 1000,
+      backSpeed: 40,
+      backDelay: 1200,
       loop: true,
     });
   });

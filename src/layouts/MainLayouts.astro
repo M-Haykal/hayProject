@@ -5,6 +5,11 @@ import IntroAnimation from "../components/IntroAnimation.astro";
 import Sidebar from "../components/sections/sidebar.astro";
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -25,6 +30,13 @@ import { ViewTransitions } from "astro:transitions";
     <link
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
     <title>HayProject</title>
     <style>
@@ -98,6 +110,224 @@ import { ViewTransitions } from "astro:transitions";
     </div>
     <Footer />
 
-    <!-- <script src="../scripts/interaksi.js"></script> -->
+    <script>
+      /* ======================================================
+       * GLOBAL CONSTANTS
+       * ====================================================== */
+      const DEFAULT_FILE = "About.js";
+      const TITLE_SUFFIX = "— HayProject — Visual Studio Code";
+      const HIDDEN_CLASS = "hidden";
+
+      /* ======================================================
+       * DOM HELPERS
+       * ====================================================== */
+      const $tabs = () => document.querySelectorAll(".tab-item");
+      const $pages = () => document.querySelectorAll(".page-content");
+      const $breadcrumb = () => document.getElementById("breadcrumb");
+      const $navbarTitle = () => document.getElementById("navbar-title");
+
+      /* ======================================================
+       * FILE STORE
+       * ====================================================== */
+      async function getFiles() {
+        const { files } = await import("../scripts/files.js");
+        return files;
+      }
+
+      async function setFileActive(fileName) {
+        const module = await import("../scripts/files.js");
+        module.setActiveFile(fileName);
+      }
+
+      /* ======================================================
+       * NAVBAR
+       * ====================================================== */
+      async function updateNavbarTitle(fileName) {
+        const files = await getFiles();
+        const file = files[fileName];
+        if (!file || !$navbarTitle()) return;
+
+        $navbarTitle().textContent = `${file.title} ${TITLE_SUFFIX}`;
+      }
+
+      /* ======================================================
+       * SIDEBAR
+       * ====================================================== */
+      window.setActiveFile = async function (fileName) {
+        await setFileActive(fileName);
+
+        window.dispatchEvent(
+          new CustomEvent("activeFileChanged", {
+            detail: { name: fileName },
+          })
+        );
+
+        updateSidebarUI(fileName);
+      };
+
+      function updateSidebarUI(fileName) {
+        document
+          .querySelectorAll('[onclick^="setActiveFile"]')
+          .forEach((item) => {
+            const label = item.querySelector("span:last-child");
+            const isActive = item.onclick.toString().includes(fileName);
+
+            item.classList.toggle("bg-[#37373d]", isActive);
+            item.classList.toggle("hover:bg-[#2a2d2e]", !isActive);
+
+            label.classList.toggle("text-white", isActive);
+            label.classList.toggle("text-gray-400", !isActive);
+          });
+      }
+
+      /* ======================================================
+       * TAB BAR
+       * ====================================================== */
+      const ACTIVE_TAB = [
+        "bg-[#1e1e1e]",
+        "border-t",
+        "border-primary",
+        "cursor-default",
+      ];
+      const INACTIVE_TAB = [
+        "bg-[#2d2d2d]",
+        "hover:bg-[#2a2d2e]",
+        "cursor-pointer",
+      ];
+
+      function updateTabBarUI(activeFile) {
+        $tabs().forEach((tab) => {
+          const isActive = tab.dataset.file === activeFile;
+          const title = tab.querySelector(".tab-title");
+
+          ACTIVE_TAB.forEach((cls) => tab.classList.toggle(cls, isActive));
+          INACTIVE_TAB.forEach((cls) => tab.classList.toggle(cls, !isActive));
+
+          title.classList.toggle("text-white", isActive);
+          title.classList.toggle("text-gray-400", !isActive);
+        });
+
+        window.activeFileName = activeFile;
+      }
+
+      async function updateBreadcrumbUI(fileName) {
+        const files = await getFiles();
+        const file = files[fileName];
+        if (!file || !$breadcrumb()) return;
+
+        $breadcrumb().innerHTML = "";
+
+        file.path
+          .split("/")
+          .slice(0, -1)
+          .forEach((part) => {
+            $breadcrumb().append(createSpan(part), createChevron());
+          });
+
+        const wrapper = document.createElement("div");
+        wrapper.className = "flex items-center gap-1";
+
+        const icon = document.createElement("i");
+        icon.className = `fa-brands fa-${file.icon} !text-[14px] ${file.iconColor}`;
+
+        const title = document.createElement("span");
+        title.className = "text-gray-300";
+        title.textContent = file.title;
+
+        wrapper.append(icon, title);
+        $breadcrumb().append(wrapper);
+      }
+
+      function createSpan(text) {
+        const span = document.createElement("span");
+        span.textContent = text;
+        return span;
+      }
+
+      function createChevron() {
+        const icon = document.createElement("span");
+        icon.className = "material-symbols-outlined !text-[14px]";
+        icon.textContent = "chevron_right";
+        return icon;
+      }
+
+      /* ======================================================
+       * TAB EVENTS
+       * ====================================================== */
+      function bindTabEvents() {
+        $tabs().forEach((tab) => {
+          const fileName = tab.dataset.file;
+
+          tab.addEventListener("click", () => activateTab(fileName));
+
+          tab.querySelector(".tab-close")?.addEventListener("click", (e) => {
+            e.stopPropagation();
+            closeTab(tab);
+          });
+        });
+      }
+
+      function activateTab(fileName) {
+        window.setActiveFile(fileName);
+        updateTabBarUI(fileName);
+        updateBreadcrumbUI(fileName);
+      }
+
+      function closeTab(tab) {
+        if ($tabs().length <= 1) return;
+
+        const fileName = tab.dataset.file;
+        tab.remove();
+
+        if (fileName === window.activeFileName) {
+          const next = $tabs()[0];
+          if (next) activateTab(next.dataset.file);
+        }
+      }
+
+      /* ======================================================
+       * PAGE CONTENT
+       * ====================================================== */
+      function hideAllPages() {
+        $pages().forEach((p) => p.classList.add(HIDDEN_CLASS));
+      }
+
+      function showPage(name) {
+        document
+          .querySelector(`[data-page="${name}"]`)
+          ?.classList.remove(HIDDEN_CLASS);
+      }
+
+      async function updateContent(fileName) {
+        const files = await getFiles();
+        const file = files[fileName];
+        if (!file) return;
+
+        hideAllPages();
+        showPage(file.content);
+      }
+
+      /* ======================================================
+       * GLOBAL EVENTS
+       * ====================================================== */
+      window.addEventListener("activeFileChanged", (e) => {
+        const name = e.detail.name;
+
+        updateNavbarTitle(name);
+        updateSidebarUI(name);
+        updateTabBarUI(name);
+        updateBreadcrumbUI(name);
+        updateContent(name);
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        updateNavbarTitle(DEFAULT_FILE);
+        updateSidebarUI(DEFAULT_FILE);
+        updateTabBarUI(DEFAULT_FILE);
+        updateBreadcrumbUI(DEFAULT_FILE);
+        updateContent(DEFAULT_FILE);
+        bindTabEvents();
+      });
+    </script>
   </body>
 </html>

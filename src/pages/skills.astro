@@ -7,14 +7,41 @@ function getImagePath(image: string) {
 }
 ---
 
-<section id="skills" class="p-10 border-b-4 border-black">
-  <h2 class="text-2xl font-semibold mb-6">Skills</h2>
+<section
+  id="skills"
+  class="p-10 border-b-4 border-black font-mono text-[15px] leading-relaxed"
+>
+  <!-- PHP Open Tag -->
+  <div class="syntax-bracket mb-2">&lt;?php</div>
 
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+  <!-- $skills = require "skill.json"; -->
+  <div>
+    <span class="syntax-const">$skills</span>
+    <span class="syntax-keyword"> = </span>
+    <span class="syntax-keyword">require</span>
+    <span class="syntax-string"> "skill.json"</span>;
+  </div>
+
+  <br />
+
+  <!-- foreach -->
+  <div>
+    <span class="syntax-keyword">foreach</span>
+    (
+    <span class="syntax-const">$skills</span>
+    <span class="syntax-keyword"> as </span>
+    <span class="syntax-const">$skill</span>
+    )
+    <span class="syntax-bracket">{</span>
+  </div>
+
+  <!-- echo card -->
+  <div class="pl-6 grid grid-cols-2 md:grid-cols-4 gap-6 mt-4">
     {
       skillsData.skill.map((skill) => (
         <div class="flex flex-col items-center p-4 border-2 border-black rounded-lg hover:animate-[wigglecute_0.4s_ease-in-out] transition">
-          <div class="mb-4 p-3 bg-blue-50 rounded-full">
+          <!-- echo "<img />"; -->
+          <div class="mb-3 p-3 bg-blue-50 rounded-full">
             <img
               src={getImagePath(skill.image)}
               alt={skill.name}
@@ -22,9 +49,26 @@ function getImagePath(image: string) {
               loading="lazy"
             />
           </div>
-          <h3 class="text-lg font-medium">{skill.name}</h3>
+
+          <!-- echo $skill['name']; -->
+          <div class="text-center">
+            <span class="syntax-keyword">echo</span>
+            <span class="syntax-const"> $skill</span>
+            <span class="syntax-bracket">['</span>
+            <span class="syntax-string">name</span>
+            <span class="syntax-bracket">']</span>;
+            <div class="text-base mt-1 font-sans">{skill.name}</div>
+          </div>
         </div>
       ))
     }
   </div>
+
+  <!-- closing foreach -->
+  <div class="mt-4">
+    <span class="syntax-bracket">}</span>
+  </div>
+
+  <!-- PHP Close Tag -->
+  <div class="syntax-bracket mt-2">?&gt;</div>
 </section>

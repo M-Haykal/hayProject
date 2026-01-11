@@ -6,22 +6,37 @@ import Skills from "./skills.astro";
 import Projects from "./projects.astro";
 import Contacts from "./contacts.astro";
 import TabBar from "../components/sections/tabBar.astro";
+import { getActiveFile } from "../scripts/files";
+
+const activeFile = getActiveFile();
 ---
 
 <MainLayouts>
   <main class="flex-1 flex flex-col bg-[#1e1e1e] overflow-hidden">
-    <TabBar />
-    <div
+    <TabBar title={activeFile.title} />
+
+    <section
       id="content"
-      class="flex-1 font-mono text-sm leading-6 overflow-auto bg-[#1e1e1e] flex">
-      <div
-        class="flex-1 font-mono text-sm leading-6 overflow-auto bg-[#1e1e1e] flex">
-        <div data-page="home" style="display:none;"><Home /></div>
-        <div data-page="about" style="display:none;"><About /></div>
-        <div data-page="skills" style="display:none;"><Skills /></div>
-        <div data-page="projects" style="display:none;"><Projects /></div>
-        <div data-page="contacts" style="display:none;"><Contacts /></div>
+      class="flex-1 font-mono text-sm leading-6 overflow-auto bg-[#1e1e1e]">
+      <div data-page="home" class="page-content hidden">
+        <Home title="Home.css" />
       </div>
-    </div>
+
+      <div data-page="about" class="page-content">
+        <About title="About.js" />
+      </div>
+
+      <div data-page="skills" class="page-content hidden">
+        <Skills title="Skills.php" />
+      </div>
+
+      <div data-page="projects" class="page-content hidden">
+        <Projects title="Projects.py" />
+      </div>
+
+      <div data-page="contacts" class="page-content hidden">
+        <Contacts title="Contact.java" />
+      </div>
+    </section>
   </main>
 </MainLayouts>

@@ -1,5 +1,9 @@
 ---
 export let title = "Sidebar";
+import { files, setActiveFile } from "../../scripts/files";
+
+const activeFile =
+  Object.values(files).find((file) => file.active) || files["Home.css"];
 ---
 
 <!-- Sidebar / Main -->
@@ -53,35 +57,58 @@ export let title = "Sidebar";
         >
       </div>
       <div class="flex flex-col exporer-content">
+        <!-- File: Home.css -->
+        <div
+          class={`flex items-center gap-2 px-6 py-1 cursor-pointer ${files["Home.css"].active ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`}
+          onclick="setActiveFile('Home.css')">
+          <i class="fa-brands fa-css !text-sm text-blue-500"></i>
+          <span
+            class={`text-sm ${files["Home.css"].active ? "text-white" : "text-gray-400"}`}
+            >Home.css</span
+          >
+        </div>
+
         <!-- File: About.js -->
         <div
-          class="flex items-center gap-2 px-6 py-1 bg-[#37373d] cursor-pointer"
-          data-file="About.js"
-          data-page="About">
-          <span class="material-symbols-outlined !text-sm text-yellow-500"
-            >javascript</span
+          class={`flex items-center gap-2 px-6 py-1 cursor-pointer ${files["About.js"].active ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`}
+          onclick="setActiveFile('About.js')">
+          <i class="fa-brands fa-js !text-sm text-yellow-500"></i>
+          <span
+            class={`text-sm ${files["About.js"].active ? "text-white" : "text-gray-400"}`}
+            >About.js</span
           >
-          <span class="text-sm text-white">About.js</span>
         </div>
+
+        <!-- File: Skills.php -->
+        <div
+          class={`flex items-center gap-2 px-6 py-1 cursor-pointer ${files["Skills.php"].active ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`}
+          onclick="setActiveFile('Skills.php')">
+          <i class="fa-brands fa-php !text-sm text-pink-500"></i>
+          <span
+            class={`text-sm ${files["Skills.php"].active ? "text-white" : "text-gray-400"}`}
+            >Skills.php</span
+          >
+        </div>
+
         <!-- File: Projects.py -->
         <div
-          class="flex items-center gap-2 px-6 py-1 hover:bg-[#2a2d2e] cursor-pointer"
-          data-file="Projects.py"
-          data-page="Projects">
-          <span class="material-symbols-outlined !text-sm text-orange-400"
-            >html</span
+          class={`flex items-center gap-2 px-6 py-1 cursor-pointer ${files["Projects.dart"].active ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`}
+          onclick="setActiveFile('Projects.dart')">
+          <i class="fa-brands fa-dart-lang !text-sm text-blue-400"></i>
+          <span
+            class={`text-sm ${files["Projects.dart"].active ? "text-white" : "text-gray-400"}`}
+            >Projects.dart</span
           >
-          <span class="text-sm text-gray-400">Projects.py</span>
         </div>
         <!-- File: Contact.ts -->
         <div
-          class="flex items-center gap-2 px-6 py-1 hover:bg-[#2a2d2e] cursor-pointer"
-          data-file="Contact.ts"
-          data-page="Contact">
-          <span class="material-symbols-outlined !text-sm text-purple-500"
-            >php</span
+          class={`flex items-center gap-2 px-6 py-1 cursor-pointer ${files["Contact.java"].active ? "bg-[#37373d]" : "hover:bg-[#2a2d2e]"}`}
+          onclick="setActiveFile('Contact.java')">
+          <i class="fa-brands fa-java !text-sm text-blue-500"></i>
+          <span
+            class={`text-sm ${files["Contact.java"].active ? "text-white" : "text-gray-400"}`}
+            >Contact.java</span
           >
-          <span class="text-sm text-gray-400">Contact.ts</span>
         </div>
       </div>
     </div>
@@ -101,57 +128,3 @@ export let title = "Sidebar";
 </aside>
 <!-- End of Sidebar / Explorer -->
 
-<!-- <script client:load>
-  const fileItems = document.querySelectorAll(".file-item");
-  const tabBar = document.querySelector(".tab-bar");
-  const breadcrumb = document.querySelector(".breadcrumb");
-  const navbarTitle = document.querySelector(".navbar-title");
-  const pages = document.querySelectorAll("[data-page]");
-
-  const icons = {
-    js: "javascript",
-    py: "terminal",
-    ts: "description",
-  };
-
-  function getIcon(file) {
-    const ext = file.split(".").pop();
-    return icons[ext] || "description";
-  }
-
-  fileItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      const file = item.dataset.file;
-      const page = item.dataset.page;
-
-      // Update Tab Bar
-      tabBar.innerHTML = `
-        <div class="flex items-center px-4 gap-2 bg-[#1e1e1e] border-t border-primary h-full cursor-default min-w-[120px]">
-          <span class="material-symbols-outlined !text-sm text-yellow-500">${getIcon(file)}</span>
-          <span class="text-xs text-white">${file}</span>
-          <span class="material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto cursor-pointer">close</span>
-        </div>
-      `;
-
-      // Update Breadcrumb
-      breadcrumb.innerHTML = `
-        <span>src</span>
-        <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
-        <span>pages</span>
-        <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
-        <div class="flex items-center gap-1">
-          <span class="material-symbols-outlined !text-[14px] text-yellow-500">${getIcon(file)}</span>
-          <span class="text-gray-300">${file}</span>
-        </div>
-      `;
-
-      // Update Navbar Title
-      navbarTitle.textContent = `${file} — Portfolio — Visual Studio Code`;
-
-      // Show relevant page
-      pages.forEach((p) => (p.style.display = "none"));
-      const targetPage = document.querySelector(`[data-page="${page}"]`);
-      if (targetPage) targetPage.style.display = "block";
-    });
-  });
-</script> -->

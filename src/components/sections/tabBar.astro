@@ -1,54 +1,32 @@
 ---
 export let title = "TabBar";
+import { files, getActiveFile } from "../../scripts/files";
+
+const activeFile = getActiveFile();
+const allFiles = Object.values(files);
 ---
 
 <!-- Tab Bar -->
-<div class="tab-bar flex bg-[#252526] h-9 overflow-x-auto border-b border-[#1e1e1e]">
-  <div
-    class="flex items-center px-4 gap-2 bg-[#1e1e1e] border-t border-primary relative h-full cursor-default min-w-[120px]" data-tab-for="About">
-    <span class="material-symbols-outlined !text-sm text-yellow-500"
-      >javascript</span
-    >
-    <span class="text-xs text-white">About.js</span>
-    <span
-      class="material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto cursor-pointer"
-      >close</span
-    >
-  </div>
-  <div
-    class="flex items-center px-4 gap-2 bg-[#2d2d2d] border-r border-[#1e1e1e] h-full cursor-pointer hover:bg-[#2a2d2e] min-w-[120px]" data-tab-for="Projects">
-    <span class="material-symbols-outlined !text-sm text-blue-400"
-      >terminal</span
-    >
-    <span class="text-xs text-gray-400">Projects.py</span>
-    <span
-      class="material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto cursor-pointer"
-      >close</span
-    >
-  </div>
-  <div
-    class="flex items-center px-4 gap-2 bg-[#2d2d2d] border-r border-[#1e1e1e] h-full cursor-pointer hover:bg-[#2a2d2e] min-w-[120px]" data-tab-for="Contact">
-    <span class="material-symbols-outlined !text-sm text-blue-500"
-      >description</span
-    >
-    <span class="text-xs text-gray-400">Contact.ts</span>
-    <span
-      class="material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto cursor-pointer"
-      >close</span
-    >
-  </div>
+<div
+  id="tab-container"
+  class="tab-bar flex bg-[#252526] h-9 overflow-x-auto border-b border-[#1e1e1e]">
+  {
+    allFiles.map((file) => (
+      <div
+        class="tab-item flex items-center px-4 gap-2 border-r border-[#1e1e1e] h-full min-w-[120px] cursor-pointer"
+        data-file={file.name}>
+        <i class={`fa-brands fa-${file.icon} !text-sm ${file.iconColor}`} />
+        <span class="tab-title text-xs">{file.title}</span>
+        <span class="tab-close material-symbols-outlined !text-[14px] text-gray-400 hover:bg-[#333] rounded ml-auto">
+          close
+        </span>
+      </div>
+    ))
+  }
 </div>
 
-<!-- Breadcrumbs -->
-<div class="breadcrumb flex items-center px-4 py-1 text-[11px] text-gray-400 bg-[#1e1e1e]">
-  <span>src</span>
-  <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
-  <span>pages</span>
-  <span class="material-symbols-outlined !text-[14px]">chevron_right</span>
-  <div class="flex items-center gap-1">
-    <span id="breadcrumb-icon" class="material-symbols-outlined !text-[14px] text-yellow-500"
-      >javascript</span
-    >
-    <span id="breadcrumb-filename" class="text-gray-300">About.js</span>
-  </div>
+<!-- Breadcrumb -->
+<div
+  id="breadcrumb"
+  class="breadcrumb-container flex items-center px-4 py-1 text-[11px] text-gray-400 bg-[#1e1e1e]">
 </div>
