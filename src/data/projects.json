@@ -56,5 +56,31 @@
       "Laravel",
       "MySql"
     ]
+  },
+  {
+    "name_project": "ÏnfoHilang",
+    "description": "InfoHilang is a community platform for reporting and finding lost items, animals, or people. Let's help each other.",
+    "link": "https://github.com/M-Haykal/InfoHilang",
+    "image_preview": "/projects/InfoHilang.png",
+    "technologies": [
+      "Tailwind",
+      "Laravel",
+      "LiveWire",
+      "MySql",
+      "Node JS"
+    ]
+  },
+  {
+    "name_project": "HayPlay",
+    "description": "HayPlay is a platform for renting sports fields, and is currently still in the development stage.",
+    "link": "https://github.com/M-Haykal/HayPlay",
+    "image_preview": "/projects/HayPlay.png",
+    "technologies": [
+      "Bootstrap",
+      "Laravel",
+      "Astro js",
+      "Flutter",
+      "MySql"
+    ]
   }
 ]

@@ -13,6 +13,10 @@
             "image": "public/Bootstrap.png"
         },
         {
+            "name": "Tailwind CSS",
+            "image": "public/tailwindcss.svg"
+        },
+        {
             "name": "Javascript",
             "image": "public/javascript.png"
         },

@@ -23,50 +23,90 @@ interface Project {
 const projects: Project[] = projectsData;
 ---
 
-<section id="projects" class="p-10 border-b-4 border-black">
-  <h2 class="text-2xl font-semibold mb-8">Projects</h2>
+<section id="projects" class="p-10 bg-[#1e1e1e] text-gray-300">
+  <h2 class="text-2xl font-semibold mb-8 font-mono text-[#4fc1ff]">
+    // Projects.dart
+  </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {
-      projects.map((project) => {
-        const colors = [
-          "bg-[#FFEEB7]",
-          "bg-[#BFF0C6]",
-          "bg-[#F7D6E0]",
-          "bg-[#D6E4FF]",
-          "bg-[#FFE2C6]",
-        ];
+      projects.map((project) => (
+        <div
+          class="
+            bg-[#1b1b1b]
+            border border-[#2d2d2d]
+            rounded-lg
+            overflow-hidden
+            font-mono
+            text-sm
+            hover:border-[#4fc1ff]
+            transition
+          ">
+          {/* File Header */}
+          <div class="flex items-center gap-2 px-4 py-2 bg-[#2d2d2d]">
+            <span class="text-[#4fc1ff]">📄</span>
+            <span class="text-gray-200">{project.name_project}.dart</span>
+          </div>
 
-        const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-        return (
-          <div class="border-4 border-black animate-[floaty_3s_ease-in-out_infinite] hover:scale-105 transition">
+          {/* Preview Image */}
+          <div class="border-t border-[#2d2d2d]">
             <img
               src={project.image_preview}
               alt={project.name_project}
-              class="w-full h-60 object-cover border-b-4 border-black"
+              class="w-full h-40 object-cover"
+              loading="lazy"
             />
-            <div class={`p-6 ${randomColor} border-b-4 border-black`}>
-              <h3 class="font-bold text-lg">{project.name_project}</h3>
-              <p class="text-sm mt-2">{project.description}</p>
-              <div class="mt-4 flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <span class="border-2 border-black bg-white px-3 py-1 text-xs font-bold">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-              <a
-                href={project.link}
-                target="_blank"
-                class="mt-4 inline-block border-4 border-black bg-white px-4 py-2 font-semibold 
-                hover:bg-gray-100 hover:scale-105 active:scale-95 transition">
-                Preview
-              </a>
-            </div>
           </div>
-        );
-      })
+
+          {/* Code Body */}
+          <div class="p-4 space-y-2 leading-6">
+            <div>
+              <span class="text-[#569cd6]">class</span>{" "}
+              <span class="text-[#4fc1ff]">
+                {project.name_project.replace(/\s+/g, "")}
+              </span>{" "}
+              <span class="text-white">{`{`}</span>
+            </div>
+
+            <div class="pl-4">
+              <div>
+                <span class="text-[#9cdcfe]">final</span>{" "}
+                <span class="text-[#4fc1ff]">String</span>{" "}
+                <span class="text-[#9cdcfe]">description</span>{" "}
+                <span class="text-white">=</span>{" "}
+                <span class="text-[#ce9178]">"{project.description}"</span>;
+              </div>
+
+              <div>
+                <span class="text-[#9cdcfe]">final</span>{" "}
+                <span class="text-[#4fc1ff]">List</span>
+                <span class="text-white">&lt;</span>
+                <span class="text-[#4fc1ff]">String</span>
+                <span class="text-white">&gt;</span>{" "}
+                <span class="text-[#9cdcfe]">techStack</span>{" "}
+                <span class="text-white">=</span>{" "}
+                <span class="text-white">[</span>
+                <span class="text-[#ce9178]">
+                  {project.technologies.join('", "')}
+                </span>
+                <span class="text-white">]</span>;
+              </div>
+            </div>
+
+            <div class="text-white">{`}`}</div>
+          </div>
+
+          {/* Footer Action */}
+          <div class="px-4 py-3 bg-[#1e1e1e] border-t border-[#2d2d2d]">
+            <a
+              href={project.link}
+              target="_blank"
+              class="text-[#4fc1ff] hover:underline">
+              project.run();
+            </a>
+          </div>
+        </div>
+      ))
     }
   </div>
 </section>

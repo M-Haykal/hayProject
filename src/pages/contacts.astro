@@ -2,75 +2,155 @@
 export let title = "Contacts";
 ---
 
-<section id="contact" class="p-10">
-  <h2 class="text-2xl font-semibold mb-6">Contact</h2>
+<section
+  class="font-mono text-sm leading-6 bg-[#1e1e1e] text-gray-300 p-10 border-b border-[#2d2d2d]">
+  <!-- File Comment -->
+  <div class="text-[#6a9955] mb-4">// Contact.java</div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-    <!-- CONTACT FORM -->
-    <form class="grid grid-cols-1 gap-4">
-      <input
-        type="text"
-        id="first-name"
-        placeholder="First Name"
-        class="border-4 border-black p-3"
-      />
-      <input
-        type="text"
-        id="last-name"
-        placeholder="Last Name"
-        class="border-4 border-black p-3"
-      />
-      <textarea placeholder="Message" class="border-4 border-black p-3 h-32"
-      ></textarea>
+  <!-- Class Declaration -->
+  <div class="text-[#569cd6]">
+    public class <span class="text-[#4fc1ff]">Contact</span>{" "}
+    <span class="text-white">{} </span>
 
-      <button
-        class="border-4 border-black px-6 py-3 bg-yellow-300 font-semibold hover:bg-yellow-400">
-        Send Message
+    <div class="pl-6 space-y-4">
+      <!-- Fields -->
+      <div>
+        <span class="text-[#569cd6]">private static final</span>{" "}
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">EMAIL</span>{" "}
+        <span class="text-white">=</span>{" "}
+        <span class="text-[#ce9178]">"haykalmuhammad456@mail.com"</span>;
+      </div>
+
+      <div>
+        <span class="text-[#569cd6]">private static final</span>{" "}
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">WHATSAPP</span>{" "}
+        <span class="text-white">=</span>{" "}
+        <span class="text-[#ce9178]">"+62 8950 9758 465"</span>;
+      </div>
+
+      <div>
+        <span class="text-[#569cd6]">private static final</span>{" "}
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">GITHUB</span>{" "}
+        <span class="text-white">=</span>{" "}
+        <span class="text-[#ce9178]">"github.com/M-Haykal"</span>;
+      </div>
+
+      <!-- Method -->
+      <div class="mt-4">
+        <span class="text-[#569cd6]">public static void</span>{" "}
+        <span class="text-[#dcdcaa]">sendMessage</span>
+        <span class="text-white">(</span>
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">firstName</span>,{" "}
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">lastName</span>,{" "}
+        <span class="text-[#4fc1ff]">String</span>{" "}
+        <span class="text-[#9cdcfe]">message</span>
+        <span class="text-white">)</span>{" "}
+        <span class="text-white">{} </span>
+
+        <div class="pl-6 space-y-2">
+          <div>
+            <span class="text-[#4fc1ff]">System</span>
+            <span class="text-white">.</span>
+            <span class="text-[#dcdcaa]">out</span>
+            <span class="text-white">.</span>
+            <span class="text-[#dcdcaa]">println</span>
+            <span class="text-white">(</span>
+            <span class="text-[#ce9178]"> "Message sent successfully 🚀" </span>
+            <span class="text-white">);</span>
+          </div>
+        </div>
+
+        <div class="text-white"></div>
+      </div>
+
+      <!-- Fake Java Call -->
+      <div class="mt-6 text-[#6a9955]">// Run method</div>
+
+      <!-- Java Input Simulation -->
+      <div class="mt-4 space-y-2">
+        <div>
+          <span class="text-[#4fc1ff]">String</span>
+          <span class="text-[#9cdcfe]">firstName</span>
+          <span class="text-white"> = </span>
+          <input
+            id="first-name"
+            placeholder='"Haykal"'
+            class="bg-transparent border-b border-[#3c3c3c] text-[#ce9178] outline-none ml-1"
+          />;
+        </div>
+
+        <div>
+          <span class="text-[#4fc1ff]">String</span>
+          <span class="text-[#9cdcfe]">lastName</span>
+          <span class="text-white"> = </span>
+          <input
+            id="last-name"
+            placeholder='"Developer"'
+            class="bg-transparent border-b border-[#3c3c3c] text-[#ce9178] outline-none ml-1"
+          />;
+        </div>
+
+        <div>
+          <span class="text-[#4fc1ff]">String</span>
+          <span class="text-[#9cdcfe]">message</span>
+          <span class="text-white"> = </span>
+          <input
+            id="message"
+            placeholder='"Hello Haykal!"'
+            class="bg-transparent border-b border-[#3c3c3c] text-[#ce9178] outline-none ml-1 w-64"
+          />;
+        </div>
+      </div>
+
+      <button onclick="sendMessage()" class="text-[#dcdcaa] hover:underline">
+        Contact.sendMessage();
       </button>
-    </form>
 
-    <!-- SOCIAL MEDIA LIST -->
-    <div class="flex flex-col gap-4">
-      <a
-        href="https://www.instagram.com/hay_hekall/"
-        class="border-4 border-black p-4 flex items-center justify-between bg-white
-         hover:bg-gray-50 hover:translate-x-2 transition">
-        <span class="font-semibold">Instagram</span>
-        <span>@hay_hekall</span>
-      </a>
+      <!-- Social Links as Java Fields -->
+      <div class="mt-6 text-[#6a9955]">// Social Media</div>
 
-      <a
-        href="www.linkedin.com/in/muhammad-haykal-b447582b2"
-        class="border-4 border-black p-4 flex items-center justify-between bg-white
-         hover:bg-gray-50 hover:translate-x-2 transition">
-        <span class="font-semibold">LinkedIn</span>
-        <span>Muhammad Haykal</span>
-      </a>
+      <div class="space-y-2">
+        <a
+          href="https://www.instagram.com/hay_hekall/"
+          target="_blank"
+          class="block hover:underline">
+          <span class="text-[#569cd6]">public static final</span>{" "}
+          <span class="text-[#4fc1ff]">String</span>{" "}
+          <span class="text-[#9cdcfe]">INSTAGRAM</span>{" "}
+          <span class="text-white">=</span>{" "}
+          <span class="text-[#ce9178]">"@hay_hekall"</span>;
+        </a>
 
-      <a
-        href="https://api.whatsapp.com/send?phone=6289509758465"
-        class="border-4 border-black p-4 flex items-center justify-between bg-white
-         hover:bg-gray-50 hover:translate-x-2 transition">
-        <span class="font-semibold">WhatsApp</span>
-        <span>+62 8950 9758 465</span>
-      </a>
+        <a
+          href="www.linkedin.com/in/muhammad-haykal-b447582b2"
+          target="_blank"
+          class="block hover:underline">
+          <span class="text-[#569cd6]">public static final</span>{" "}
+          <span class="text-[#4fc1ff]">String</span>{" "}
+          <span class="text-[#9cdcfe]">LINKEDIN</span>{" "}
+          <span class="text-white">=</span>{" "}
+          <span class="text-[#ce9178]">"Muhammad Haykal"</span>;
+        </a>
 
-      <a
-        href="mailto:haykalmuhammad456@mail.com"
-        class="border-4 border-black p-4 flex items-center justify-between bg-white
-         hover:bg-gray-50 hover:translate-x-2 transition">
-        <span class="font-semibold">Email</span>
-        <span>haykalmuhammad456@mail.com</span>
-      </a>
-
-      <a
-        href="https://github.com/M-Haykal"
-        class="border-4 border-black p-4 flex items-center justify-between bg-white
-         hover:bg-gray-50 hover:translate-x-2 transition">
-        <span class="font-semibold">GitHub</span>
-        <span>github.com/M-Haykal</span>
-      </a>
+        <a
+          href="https://github.com/M-Haykal"
+          target="_blank"
+          class="block hover:underline">
+          <span class="text-[#569cd6]">public static final</span>{" "}
+          <span class="text-[#4fc1ff]">String</span>{" "}
+          <span class="text-[#9cdcfe]">GITHUB</span>{" "}
+          <span class="text-white">=</span>{" "}
+          <span class="text-[#ce9178]">"github.com/M-Haykal"</span>;
+        </a>
+      </div>
     </div>
+
+    <div class="text-white mt-4"></div>
   </div>
 </section>
 
